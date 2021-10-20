@@ -15,7 +15,7 @@ def secondeEnTemps(seconde):
     mes_jours = seconde // 86400
     mes_heures = (seconde - (mes_jours * 86400)) // 3600
     mes_minutes = (seconde - (mes_jours * 86400) - (mes_heures*3600)) // 60
-    mes_secondes = (seconde - (mes_jours * 86400) - (mes_heures*3600) - (mes_minutes*60)) // 60
+    mes_secondes = (seconde - (mes_jours * 86400) - (mes_heures*3600) - (mes_minutes*60))
     return (mes_jours,mes_heures,mes_minutes,mes_secondes)
 
 temps = secondeEnTemps(100000)
@@ -40,11 +40,37 @@ def afficheTemps(temps):
     if temps[3] == 1 :
         print (str(", nombre de seconde:"), int(temps[3]), end="")
     elif temps[3] > 1: 
-        print (str(", nombre de secondes:"), int(temps[3]), end="")
-afficheTemps((1,0,14,23))   
+        print (str(", nombre de secondes:"), int(temps[3]), str("."))
+afficheTemps((1,0,14,23))
 
 
 def demandeTemps():
-    pass
+    jours = int(input("nombre de jours:"))
 
-afficheTemps(demandeTemps())
+    heures = int(input("nombre d'heures:"))
+    while heures > 23 :
+        print(str("nombre d'heures non valide"))
+        heures = int(input("nombre d'heures:"))
+
+    minutes = int(input("nombre de minutes:"))
+    while minutes > 60:
+        print(str("nombr de minutes non valide"))
+        minutes = int(input("nombre de minutes:"))
+        
+    secondes = int(input("nombre de secondes:"))
+    while secondes > 60 :
+        print(str("nombre de secondes non valide"))
+        secondes = int(input("nombre de secondes:"))
+
+    temps = (jours,heures,minutes,secondes)
+    return temps
+    
+print("demande temps: ", demandeTemps())
+
+
+def sommeTemps(temps1,temps2):
+    seconde1 = tempsEnSeconde(temps1) + tempsEnSeconde(temps2)
+    temps = secondeEnTemps(seconde1)
+    return temps
+
+print(sommeTemps((2,3,4,25),(5,22,57,1))) 
