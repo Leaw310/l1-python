@@ -48,17 +48,17 @@ def demandeTemps():
     jours = int(input("nombre de jours:"))
 
     heures = int(input("nombre d'heures:"))
-    while heures > 23 :
+    while heures > 23 and heures < 0:
         print(str("nombre d'heures non valide"))
         heures = int(input("nombre d'heures:"))
 
     minutes = int(input("nombre de minutes:"))
-    while minutes > 60:
+    while minutes > 60 and minutes < 0:
         print(str("nombr de minutes non valide"))
         minutes = int(input("nombre de minutes:"))
         
     secondes = int(input("nombre de secondes:"))
-    while secondes > 60 :
+    while secondes > 60 and secondes < 0:
         print(str("nombre de secondes non valide"))
         secondes = int(input("nombre de secondes:"))
 
